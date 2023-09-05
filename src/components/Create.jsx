@@ -18,8 +18,10 @@ function Create() {
   const handleSubmit = (event) => {
     event.preventDefault();
     const rand = nunuid();
-    dispatch(addProduct({ id: rand, name }));
+    name.length > 0 ?  dispatch(addProduct({ id: rand, name })) : null
+   
     navigation("/");
+  
     console.log(event.target);
   };
   return (
@@ -29,8 +31,9 @@ function Create() {
           <input
             type="text"
             placeholder="Add a new task"
+            
             className="task-input"
-            onChange={(e) => setName(e.target.value)}
+          onChange={(e) => setName(e.target.value)}
           />
           <button className="add-button" type="submit">
             Add Task
